@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) {
+        vector<int> frequency(nums.size() + 1);
+        
+        vector<vector<int>> result;
+        for (int c : nums) {
+            if (frequency[c] >= result.size()) {
+                result.push_back({});
+            }
+
+            result[frequency[c]].push_back(c);
+            frequency[c]++;
+        }
+        
+        return result;
+    }
+};
