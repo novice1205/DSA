@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        if(nums.size()==0 || nums.size()==1){
+            return -1;
+        }
+        map<int,int> counter;
+        for(int i:nums){
+            counter[i]++;
+        }
+        int result = 0;
+        for (auto [_, count]: counter) {
+            if(count==1){
+                return -1;
+            }
+            result += ceil((double)(count) / 3);
+        }
+        return result;
+    }
+};
